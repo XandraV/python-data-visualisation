@@ -1,8 +1,6 @@
 import re
-from data import Data
 import itertools
 from periodic_table import periodic
-
 
 class Search(object):
 
@@ -80,8 +78,3 @@ class Search(object):
 
         #print(result)
         return result
-
-
-
-    
-
