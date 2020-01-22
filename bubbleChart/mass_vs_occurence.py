@@ -5,7 +5,6 @@ import csv
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-np.set_printoptions(threshold=np.nan)
 
 if __name__ == '__main__' :
     def read_from_csv(filename):
@@ -18,16 +17,16 @@ if __name__ == '__main__' :
     m = read_from_csv('minerals_mindat.csv')
     elements_mass = periodic.molar_mass
     table = periodic.table
-    unique = periodic.element_with_unique_starting()
-    not_unique = periodic.element_with_not_unique_starting()
+    unique = periodic().element_with_unique_starting()
+    not_unique = periodic().element_with_not_unique_starting()
 
     matrix = np.zeros((118, 2))
     for k, v in elements_mass.items():
         row = list(elements_mass.keys()).index(k)
         if k in unique:
-            freq = len(Search.search(k, m))
+            freq = len(Search().search(k, m))
         elif k in not_unique:
-            freq = len(Search.search_spec(k, not_unique[k], m))
+            freq = len(Search().search_spec(k, not_unique[k], m))
         matrix[row][0] = v
         matrix[row][1] = freq
 

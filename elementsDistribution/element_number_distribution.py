@@ -8,7 +8,7 @@ class count_distinct_elements(object):
     def __init__(self):
         super().__init__()
 
-    def count(mylist):
+    def count(self, mylist):
         mineral_names = []
         element_count = []
         for mydict in mylist:
@@ -29,8 +29,8 @@ if __name__ == '__main__' :
         return results
 
     m = read_from_csv('minerals_mindat.csv')
-    c = jsonclass.create_clean_dict(m)
-    my_groupped_dataframe = count_distinct_elements.count(c)
+    c = jsonclass().create_clean_dict(m)
+    my_groupped_dataframe = count_distinct_elements().count(c)
     my_data_frame = pd.DataFrame(my_groupped_dataframe).reset_index()
     
     my_data_frame1 = pd.DataFrame(my_groupped_dataframe)

@@ -1,10 +1,11 @@
 import re
+import csv
 import json
 class jsonclass(object):
     def __init__(self):
         super().__init__()
 
-    def create_clean_dict(mydict):
+    def create_clean_dict(self, mydict):
         result = list()
         for key, value in mydict.items():
             newdict = dict()
@@ -28,7 +29,6 @@ class jsonclass(object):
                 pass
         return result
 
-if __name__ == '__main__' :
     def read_from_csv(self, filename):
         with open(filename,newline='', encoding='utf-8') as myfile:
             reader = csv.reader(myfile)
@@ -36,8 +36,9 @@ if __name__ == '__main__' :
             results = dict(reader)
         return results
 
-    m = read_from_csv('minerals_mindat.csv')
-    c = jsonclass.create_clean_dict(m)
+if __name__ == '__main__' :
+    m = jsonclass().read_from_csv('minerals_mindat.csv')
+    c = jsonclass().create_clean_dict(m)
     print(c)
     with open('jsondata.txt', 'w', encoding='utf-8') as outfile:  
         json.dump(c, outfile, ensure_ascii=False)

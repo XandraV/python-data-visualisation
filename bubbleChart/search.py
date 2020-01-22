@@ -7,14 +7,14 @@ class Search(object):
     def __init__(self):
         super().__init__()
 
-    def search(phrase, mydict):
+    def search(self, phrase, mydict):
         a = []
         for key, value in mydict.items():
             if str(phrase) in str(value):
                 a.append(key)
         return a
 
-    def search_molecule(molecule, mydict):
+    def search_molecule(self, molecule, mydict):
         a = []
         for key, value in mydict.items():
             clean_value = re.sub('\d', '', value)
@@ -22,9 +22,8 @@ class Search(object):
                 a.append(key)
         return a
     
-    def search_spec(searched_element, not_searched, mydict):
+    def search_spec(self, searched_element, not_searched, mydict):
         result = []
-        ok = False
         for key, value in mydict.items():
             if str(searched_element) in str(value):
                 splitted = re.findall('\d*\D+', value)
@@ -53,9 +52,8 @@ class Search(object):
         return result
         
 
-    def search_spec_two_element(searched_element, searched_element2, not_searched, mydict):
+    def search_spec_two_element(self, searched_element, searched_element2, not_searched, mydict):
         result = []
-        ok = False
         for key, value in mydict.items():
             if searched_element in value:
                 splitted = re.findall('\d*\D+', value)

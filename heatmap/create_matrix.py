@@ -5,16 +5,16 @@ import csv
 import numpy as np
 import seaborn as sns
 import pandas as pd
-import plotly.plotly as py
+import chart_studio.plotly as py
 import matplotlib.pyplot as plt
 from pandas.plotting import scatter_matrix
-np.set_printoptions(threshold=np.nan)
+#np.set_printoptions(threshold=np.nan)
 
-class creatematrix():
+class creatematrix(object):
     def __init__(self):
         super().__init__()
 
-    def get_numbers_array():
+    def get_numbers_array(self):
         element_numbers = dict()
         for element in periodic.table:
             element_numbers[element] = periodic.table.index(element)
@@ -29,7 +29,7 @@ class creatematrix():
 
     # Returns how many minerals conatain an element with non-unique starting letter
     def occurence_not_unique(self, element, mineral_dict):
-        return len(Search.search_spec(element, eval(periodic.element_with_not_unique_starting().get(element)), mineral_dict))
+        return len(Search.search_spec(element, eval(periodic().element_with_not_unique_starting().get(element)), mineral_dict))
 
     # Returns an array of elements with unique starting letters that occur more than 0 times in minerals
     def unique_to_be_paired(self, unique_array, mineral_dict):
@@ -69,19 +69,19 @@ class creatematrix():
             links[key] = value
         return links
 
-    def replace_values_with_ones(mineral_matrix):
+    def replace_values_with_ones(self, mineral_matrix):
         for i in range(len(mineral_matrix)):
             for j in range(len(mineral_matrix[i])):
                 if mineral_matrix[i][j] != 0:
                     mineral_matrix[i][j] = 1
 
-    def fill_matrix(mineral_matrix, link_dict):
+    def fill_matrix(self, mineral_matrix, link_dict):
         for i in range(len(link_dict)):
             index_i = list(link_dict.keys())[i][0]
             index_j = list(link_dict.keys())[i][1]
             mineral_matrix[index_i][index_j] = link_dict[list(link_dict.keys())[i]]
     
-    def calculate_pairs(to_be_paired_list):
+    def calculate_pairs(self, to_be_paired_list):
         return list(itertools.combinations(to_be_paired_list, 2))
 
     def get_data_for_react_heatmap(self, data_stack):
@@ -100,16 +100,16 @@ class creatematrix():
 if __name__ == '__main__' :
     my_data = creatematrix().read_from_csv('minerals_mindat.csv')
 
-    unique_element = periodic.element_with_unique_starting()
-    not_unique_element = periodic.element_with_not_unique_starting()
+    unique_element = periodic().element_with_unique_starting()
+    not_unique_element = periodic().element_with_not_unique_starting()
 
     to_be_paired = creatematrix().non_unique_to_be_paired(not_unique_element, my_data) + creatematrix().unique_to_be_paired(unique_element, my_data)
     
-    pairs = creatematrix.calculate_pairs(to_be_paired)
+    pairs = creatematrix().calculate_pairs(to_be_paired)
     links = creatematrix().get_links_dict_with_indexes(not_unique_element, pairs, my_data)
 
     matrix = np.zeros((74,74))
-    creatematrix.fill_matrix(matrix, links)
+    creatematrix().fill_matrix(matrix, links)
     df = pd.DataFrame(matrix, index=to_be_paired, columns=to_be_paired)
     df = df.astype(int)
     df.drop_duplicates(inplace=True)
@@ -121,6 +121,8 @@ if __name__ == '__main__' :
     # heatmapdata.text is the same as heatmap_data_for_react array above
     #with open('heatmapdata.txt', 'w', encoding='utf-8') as txtfile:
             #txtfile.write(str(result))
+
+    #sns.heatmap(df, fmt='g', annot=True, xticklabels=True, yticklabels=True)
     sns.heatmap(df, fmt='g', xticklabels=True, yticklabels=True)
     plt.show()
 
