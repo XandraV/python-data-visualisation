@@ -1,5 +1,6 @@
 # **Analysis of element occurence in minerals**
 Forms the basis of the dashboard page of Crystallizer React app.
+Visit the app here  --> https://xandrav.github.io/crystallizer/
 
 ### Methods Used
 * Data Visualization
