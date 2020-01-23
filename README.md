@@ -21,7 +21,7 @@ You can visit the deployed app at https://xandrav.github.io/crystallizer/.
 
 ## Project 1 - *Heatmap*
 ### Objective
-1. Find out what native element pairs occure the most oen in minerals and visualise the result as a heatmap.
+1. Find out what native element pairs occure the most often in minerals and visualise the result as a heatmap.
 
 ## Process
 1. Collected chemical structures of 4404 mineral from from https://www.mindat.org using Python Request library.
