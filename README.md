@@ -21,7 +21,7 @@ You can visit the deployed app at https://xandrav.github.io/crystallizer/.
 
 ## Project 1 - *Heatmap*
 ### Objective
-1. Find out what native element pairs occure the most often in minerals and visualise the result as a heatmap.
+ Find out what native element pairs occure the most often in minerals and visualise the result as a heatmap.
 
 ## Process
 1. Collected chemical structures of 4404 mineral from from https://www.mindat.org using Python Request library.
@@ -36,12 +36,12 @@ You can visit the deployed app at https://xandrav.github.io/crystallizer/.
 
 ## Project 2 - *Bubble Chart*
 ### Objective
-1. Find out what native element occures the most often in minerals and visualise the result versus the atomic number of the elements.
+ Find out what native element occures the most often in minerals and visualise the result versus the atomic number of the elements.
 ![Alt text](img/bubble.png)
 
 ## Project 3 - *Line and Bar Charts*
 ### Objective
-1. Find out how many distinct elements minerals contain on average.
+ Find out how many distinct elements minerals contain on average.
 
 ## Process
 1. Collected chemical structures of 4404 mineral that I stored in a csv file. For this analysis I converted the csv into a json where each object has two fields: name and an array of individual elements the mineral contains.
